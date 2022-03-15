@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "ZT-Admin",
+    "slug": "ZT-Admin",
+    "privacy": "public",
+    "platforms": ["ios", "android"],
+    "version": "1.4.0",
+    "orientation": "portrait",
+    "icon": "",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "description": "ZT-Admin, Data & Docs Management. Coded by Mohammad Zainulla"
+  }
+}
