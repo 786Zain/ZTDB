@@ -1,0 +1,25 @@
+<!-- <html>
+
+<body>
+    <h4>Zain </h4>
+</body>
+
+</html> -->
+<%- include('header') -%>
+<h1>
+  Nodejs Static Site
+</h1>
+<h4>CRUD Operations</h4>
+<form action="/zt/users/addUser"  method="POST">
+    <label>Name:</label><br />
+    <input type="text" name="Name" /><br />
+    <label>Age:</label><br />
+    <input type="number" name="age" /><br />
+    <label>Mobile Number:</label><br />
+    <input type="number" name="mobile" /><br />
+    <label>Fax:</label><br />
+    <input type="number" name="fax" /><br />
+    <input type="submit" value="Send" /><br />
+
+</form>
+<%- include('footer') -%>
