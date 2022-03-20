@@ -5,14 +5,13 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
-// const httpContext = require('express-http-context')
 const path = require("path");
 
 // MIDDLEWARE
 const Routes = require("./routes/index");
 const app = express();
 const port = process.env.port || 5000;
-
+const staticSite = path.join(__dirname, "/public");
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 io.on("connection", () => {
@@ -20,14 +19,14 @@ io.on("connection", () => {
 });
 
 // APPLICATION MIDDLEWARES
-const staticSite = path.join(__dirname, "/public");
 app.set("view engine", "ejs");
-// app.use(express.static(staticSite));
+app.use(express.static(staticSite));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use("/zt/", Routes);
+
 // wild route
 app.use((req, res) => {
   res.send("Page not found");
