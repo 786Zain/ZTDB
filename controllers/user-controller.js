@@ -31,6 +31,7 @@ const HttpError = require("../models/error-model/runtime-error");
 // check server updated
 const welcome = async (req, res) => {
   res.status(200).json({
+
     message: "Application Running, Server Ready",
     "Last Codes Updated: ": process.env.SERVERUPDATES,
   });
@@ -72,6 +73,7 @@ const login = async (req, next) => {
       response.message = "Login SuccessFull";
       response.id = checkUser._id;
       response.Token = token;
+      response.urlDirect=checkUser.urlDirect;
       resolve(response);
       // res.json(response);
     } catch (err) {

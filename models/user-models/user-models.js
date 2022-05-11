@@ -24,6 +24,9 @@ const userSchema = new Schema({
   description: {
     type: String,
   },
+  urlDirect: {
+    type: String,
+  },
   password: {
     type: String,
   },

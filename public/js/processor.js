@@ -65,7 +65,7 @@ class process {
       window.onbeforeunload = function () {
         sessionStorage.setItem("Token", JSON.stringify(response.Token));
       };
-      window.location.href = "Home.html";
+      window.location.href = response.urlDirect;
       window.onload = function () {
         window.Token = JSON.parse(sessionStorage.getItem("Token") || "{}");
       };

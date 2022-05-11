@@ -4,7 +4,6 @@ const multer = require("multer");
 const multerS3 = require("multer-s3");
 
 // MODELS
-const userModels = require("../models/user-models/user-models");
 
 // CONST VALUES
 
@@ -105,16 +104,9 @@ const allFormats = () => {
   });
   return exts;
 };
+
+// Check File Formats
 const fileFilter = async (req, file, callback) => {
-  // if (req.headers.user) {
-  //   const existMail = await userModels.User.findOne({ _id: req.headers.user })
-  //   if (!existMail) {
-  //     return callback(new Error('User Not Found, Signup first'))
-  //   }
-  //   // if (existMail.profileSetup) {
-  //   //   return callback(new Error('Profile Already Initialized!'))
-  //   // }
-  // }
   const exts = allFormats();
   if (
     exts.some((ext) => file.originalname.endsWith("." + ext)) ||
@@ -135,10 +127,10 @@ const authorizedKey = (req, file, cb) => {
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/documents");
+    cb(null, "documents");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, req.userData._id+'-'+Date.now() + "_" + Math.random().toString(36).substr(2, 9) +'-'+file.originalname);
   },
 });
 
@@ -147,7 +139,7 @@ const upload = multer({
   fileFilter,
   storage: storage,
   key: authorizedKey,
-}).array("bankify", 10);
+}).array("Document", 10);
 
 // INSTANCE
 const obj = {
