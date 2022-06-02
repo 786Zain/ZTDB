@@ -20,12 +20,14 @@ const HttpError = require("../models/error-model/runtime-error");
 
 // check server updated
 const welcome = async (req, res) => {
-  res.render("docsEntry");
+  return new Promise(async (resolve, reject) => {
+    res.render("docsEntry");
+  })}
   // res.status(200).json({
   //   message: "Documents Controller Opearating",
 
   // });
-};
+// }
 
 // Manage documents
 const list = async (req, next) => {

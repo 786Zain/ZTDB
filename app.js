@@ -23,8 +23,8 @@ io.on("connection", () => {
 });
 
 // APPLICATION MIDDLEWARES
-app.set("view engine", "ejs");
 app.use(express.static(staticSite));
+app.set("view engine", "ejs");
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
