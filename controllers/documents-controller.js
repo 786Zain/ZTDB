@@ -9,6 +9,8 @@ const documentModels = require("../models/document-model/document-model");
 
 // HELPERS
 const ZTCRYPTO = require("../helpers/crypto");
+const APICALLS = require("../helpers/apiCalls");
+
 
 // MIDDLEWARES
 const HttpError = require("../models/error-model/runtime-error");
@@ -21,7 +23,7 @@ const HttpError = require("../models/error-model/runtime-error");
 // check server updated
 const welcome = async (req, res) => {
   return new Promise(async (resolve, reject) => {
-    res.render("docsEntry");
+    res.render("docsEntry",{urls:"Data"});
   })}
   // res.status(200).json({
   //   message: "Documents Controller Opearating",

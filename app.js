@@ -6,16 +6,16 @@ const cors = require("cors");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const path = require("path");
-const swaggerUi = require('swagger-ui-express'); 
+const swaggerUi = require("swagger-ui-express");
 
 // MIDDLEWARE
 const Routes = require("./routes/index");
 const app = express();
 const port = process.env.port || 5000;
 const staticSite = path.join(__dirname, "/public");
-const swaggerDocument = require('./helpers/swagger.json'); 
+const swaggerDocument = require("./helpers/swagger.json");
 // const customCss = fs.readFileSync((process.cwd()+"/swagger.css"), 'utf8');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 io.on("connection", () => {
@@ -33,7 +33,7 @@ app.use("/zt/", Routes);
 
 // wild route
 app.use((req, res) => {
-  res.send("Page not found");
+  res.render("404", { data: "content" });
 });
 
 // ERROR MIDDLEWARE
